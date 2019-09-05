@@ -15,7 +15,14 @@ namespace Repo
         const string API_LIST_LINES = API_BASE + "list? format = lines";
         static void Main(string[] args)
         {
+            var client = new HttpClient();
+            var response = client.GetAsync(API_LIST_LINES).GetAwaiter().GetResult();
+            if(response.IsSuccessStatusCode)
+            {
+                var content = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+                WriteLine(content);
 
+            }
         }
     }
 }
