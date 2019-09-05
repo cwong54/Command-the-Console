@@ -17,12 +17,18 @@ namespace Repo
         {
             var client = new HttpClient();
             var response = client.GetAsync(API_LIST_LINES).GetAwaiter().GetResult();
+            //Will give you an HTTP response object
+            //
             if(response.IsSuccessStatusCode)
             {
                 var content = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+                //So you don't have to use Console.WriteLine
                 WriteLine(content);
 
             }
+            //Run do it's job while other code does it's own job
+            //Wait for it to complete before get results
+            //Do it Async is ONE after another
         }
     }
 }
